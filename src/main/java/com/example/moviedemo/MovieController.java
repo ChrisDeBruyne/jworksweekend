@@ -12,8 +12,8 @@ public class MovieController {
     private String apiKey = "3c5dc7cf33e70ad798ec4337a7a14605";
 
     @GetMapping
-    public Mono<String> getMovie(@RequestParam String id){
+    public Mono<Movie> getMovie(@RequestParam String id){
         RestTemplate restTemplate = new RestTemplate();
-        return Mono.just(restTemplate.getForObject("https://api.themoviedb.org/3/movie/"+ id + "?api_key=" + apiKey, String.class));
+        return Mono.just(restTemplate.getForObject("https://api.themoviedb.org/3/movie/"+ id + "?api_key=" + apiKey, Movie.class));
     }
 }
