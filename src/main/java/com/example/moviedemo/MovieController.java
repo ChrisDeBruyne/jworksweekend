@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import reactor.core.publisher.Mono;
 
 @RestController("movie")
 public class MovieController {
@@ -11,8 +12,8 @@ public class MovieController {
     private String apiKey = "3c5dc7cf33e70ad798ec4337a7a14605";
 
     @GetMapping
-    public String getMovie(@RequestParam String id){
+    public Mono<String> getMovie(@RequestParam String id){
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("https://api.themoviedb.org/4/list/"+ id + "?page=1&api_key=" + apiKey, String.class);
+        return Mono.just(restTemplate.getForObject("https://api.themoviedb.org/3/movie/"+ id + "?api_key=" + apiKey, String.class));
     }
 }
