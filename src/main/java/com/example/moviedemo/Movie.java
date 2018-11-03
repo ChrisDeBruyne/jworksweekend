@@ -8,6 +8,7 @@ public class Movie {
     private String original_title;
     private List<Country> production_countries;
 
+
     public String getImdb_id() {
         return imdb_id;
     }
@@ -31,11 +32,14 @@ public class Movie {
     public void setProduction_countries(List<Country> production_countries) {
         this.production_countries = production_countries;
     }
+
+
 }
 
 class Country {
     private String iso_3166_1;
     private String name;
+    private String extra;
 
     public String getIso_3166_1() {
         return iso_3166_1;
@@ -51,5 +55,12 @@ class Country {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }
